@@ -1,0 +1,7 @@
+image: arauch82/openhab_rfsniffer:latest
+manifests:
+  - image: arauch82/openhab_rfsniffer:latest-arm64v8
+    platform:
+      architecture: arm64
+      os: linux
+      variant: v8
