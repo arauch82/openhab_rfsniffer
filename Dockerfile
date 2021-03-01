@@ -1,5 +1,5 @@
 # Pull base image
-FROM resin/rpi-raspbian:buster
+FROM balenalib/rpi-raspbian:buster
 MAINTAINER Andreas Rauch <mail@andreas-rauch.de>
 
 # Install dependencies
