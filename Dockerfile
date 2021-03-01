@@ -1,5 +1,5 @@
 # Pull base image
-FROM balenalib/raspberrypi4-python
+FROM balenalib/raspberrypi4-64-python
 MAINTAINER Andreas Rauch <mail@andreas-rauch.de>
 
 # Install dependencies
