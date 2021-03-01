@@ -1,5 +1,6 @@
 # Pull base image
 FROM arm64v8/python:3
+COPY qemu-arm-static /usr/bin
 MAINTAINER Andreas Rauch <mail@andreas-rauch.de>
 
 WORKDIR /usr/src/app
