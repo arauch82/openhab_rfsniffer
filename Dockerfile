@@ -9,6 +9,7 @@ RUN install_packages python python-dev python-pip
 
 # Install rpi-rf
 RUN pip install wheel
+RUN pip install --no-cache-dir rpi.gpio
 RUN pip install rpi-rf
 
 # Define working directory
