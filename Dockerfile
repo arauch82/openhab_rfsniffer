@@ -1,5 +1,5 @@
 # Pull base image
-FROM balenalib/rpi-raspbian:buster
+FROM balenalib/raspberrypi4-python
 MAINTAINER Andreas Rauch <mail@andreas-rauch.de>
 
 # Install dependencies
