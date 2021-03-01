@@ -3,13 +3,12 @@ FROM balenalib/rpi-raspbian:buster
 MAINTAINER Andreas Rauch <mail@andreas-rauch.de>
 
 # Install dependencies
-RUN apt-get update && apt-get install -y \
+RUN apt-get update && apt-get install -y --no-install-recommends \
     python \
     python-dev \
     python-pip \
-    python-virtualenv \
-    --no-install-recommends && \
-    rm -rf /var/lib/apt/lists/*
+    python-virtualenv && \
+rm -rf /var/lib/apt/lists/*
 
 # Install rpi-rf
 RUN pip install rpi-rf
