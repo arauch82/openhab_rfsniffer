@@ -3,7 +3,8 @@ FROM balenalib/rpi-raspbian:buster
 MAINTAINER Andreas Rauch <mail@andreas-rauch.de>
 
 # Install dependencies
-RUN apt-get update && apt-get install -y --no-install-recommends \
+RUN apt-get update -q && \
+DEBIAN_FRONTEND=noninteractive apt-get install -yq --no-install-recommends \
     python \
     python-dev \
     python-pip \
@@ -17,6 +18,7 @@ RUN pip install rpi-rf
 WORKDIR /data
 
 COPY rf_receiver.py /data
+RUN chmod +x /data/rf_receiver.py
 
 # Define default command
 ENTRYPOINT ["python", "/data/rf_receiver.py"]
