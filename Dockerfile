@@ -1,24 +1,16 @@
 # Pull base image
-FROM balenalib/raspberrypi4-64-python
+FROM arm64v8/python:3
 MAINTAINER Andreas Rauch <mail@andreas-rauch.de>
 
-RUN [ "cross-build-start" ]
+WORKDIR /usr/src/app
+
+COPY rf_receiver.py /.
+COPY requirements.txt ./
 
 # Install dependencies
-RUN install_packages python python-dev python-pip
+RUN pip install --no-cache-dir -r requirements.txt
 
-# Install rpi-rf
-RUN pip install wheel
-RUN pip install --no-cache-dir rpi.gpio
-RUN pip install rpi-rf
-
-# Define working directory
-WORKDIR /data
-
-COPY rf_receiver.py /data
-RUN chmod +x /data/rf_receiver.py
-
-RUN [ "cross-build-end" ]
+COPY rf_receiver.py /.
 
 # Define default command
-ENTRYPOINT ["python", "/data/rf_receiver.py"]
+ENTRYPOINT ["python", "./rf_receiver.py"]
