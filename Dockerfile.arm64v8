@@ -1,10 +1,14 @@
-FROM arm64v8/python:3
+FROM arm64v8/python:3-alpine
 COPY qemu-aarch64-static /usr/bin/
 
 WORKDIR /usr/src/app
 
 COPY rf_receiver.py /.
 COPY requirements.txt ./
+
+RUN apt-get update \
+&& apt-get install gcc -y \
+&& apt-get clean
 
 # Install dependencies
 RUN pip install --no-cache-dir -r requirements.txt
