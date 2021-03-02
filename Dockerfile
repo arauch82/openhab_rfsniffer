@@ -1,4 +1,4 @@
-FROM python:3
+FROM python:3-alpine
 
 WORKDIR /usr/src/app
 
@@ -7,8 +7,6 @@ COPY requirements.txt ./
 
 # Install dependencies
 RUN pip install --no-cache-dir -r requirements.txt
-
-COPY rf_receiver.py /.
 
 # Define default command
 ENTRYPOINT ["python", "./rf_receiver.py"]
