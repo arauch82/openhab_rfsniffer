@@ -1,13 +1,10 @@
-FROM arm64v8/python:3.8-alpine
+FROM arm64v8/python:3-buster
 COPY qemu-aarch64-static /usr/bin/
 
 WORKDIR /usr/src/app
 
 COPY rf_receiver.py /.
 COPY requirements.txt ./
-
-# Install gcc
-RUN apk add build-base
 
 # Install dependencies
 RUN pip install --no-cache-dir -r requirements.txt
