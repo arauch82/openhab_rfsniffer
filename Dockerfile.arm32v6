@@ -1,4 +1,4 @@
-FROM arm32v6/python:3-alpine
+FROM arm32v6/python:3.8-alpine
 COPY qemu-arm-static /usr/bin/
 
 WORKDIR /usr/src/app
