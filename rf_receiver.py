@@ -22,11 +22,11 @@ logging.basicConfig(level=logging.INFO, datefmt='%Y-%m-%d %H:%M:%S',
 parser = argparse.ArgumentParser(description='Receives a decimal code via a 433/315MHz GPIO device')
 parser.add_argument('--gpio', dest='gpio', type=int, default=27,
                     help="GPIO pin (Default: 27)")
-parser.add_argument('--ip_address', dest='ip_address', type=str, required=true,
+parser.add_argument('--ip_address', dest='ip_address', type=str, required=True,
                     help="IP address of Openhab")
-parser.add_argument('--item', dest='item', type=str, required=true,
+parser.add_argument('--item', dest='item', type=str, required=True,
                     help="Item to be switched")
-parser.add_argument('--code', dest='code', type=str, required=true,
+parser.add_argument('--code', dest='code', type=str, required=True,
                     help="Code to be received")
 args = parser.parse_args()
 
@@ -42,9 +42,8 @@ while True:
         logging.info(str(rfdevice.rx_code) +
                      " [pulselength " + str(rfdevice.rx_pulselength) +
                      ", protocol " + str(rfdevice.rx_proto) + "]")
-		if(str(rfdevice.rx_code) == args.code){
-			logging.info("Sending RestAPI Post to Openhab")
-			resp = requests.post(item_address, data='ON', headers={'Content-Type': 'text/plain', 'Accept': 'application/json'})
-		}
+        if(str(rfdevice.rx_code) == args.code):
+            logging.info("Sending RestAPI Post to Openhab")
+            resp = requests.post(item_address, data='ON', headers={'Content-Type': 'text/plain', 'Accept': 'application/json'})
     time.sleep(0.01)
 rfdevice.cleanup()

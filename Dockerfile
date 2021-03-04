@@ -2,7 +2,7 @@ FROM python:3
 
 WORKDIR /usr/src/app
 
-COPY rf_receiver.py /.
+COPY rf_receiver.py ./
 COPY requirements.txt ./
 
 # Install dependencies

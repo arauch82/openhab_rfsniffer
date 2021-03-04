@@ -1,5 +1,4 @@
 FROM arm64v8/python:3-buster
-COPY qemu-aarch64-static /usr/bin/
 
 WORKDIR /usr/src/app
 
